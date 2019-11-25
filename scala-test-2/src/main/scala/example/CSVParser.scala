@@ -10,5 +10,13 @@ object CSVParserRunner extends App {
 }
 
 object CSVParser {
-  def parse(input: String): Seq[(String, Option[Int])] = ???
+  def parse(input: String): Seq[(String, Option[Int])] = {
+    input
+      .split("\n")
+      .map(_.split(";"))
+      .map({
+        case Array(string, number, _*) => string -> number.toIntOption
+        case Array(string, _*)         => string -> None
+      })
+  }
 }
