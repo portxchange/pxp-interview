@@ -1,0 +1,1 @@
+sbt "runMain example.Main 123"
